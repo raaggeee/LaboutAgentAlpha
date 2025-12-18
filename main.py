@@ -2,6 +2,7 @@
 import streamlit as st
 import uuid
 import requests
+BASE_URL = st.secrets["BASE_URL"]
 
 if "uid" not in st.session_state:
     st.session_state.uid = str(uuid.uuid4())
@@ -18,7 +19,7 @@ user_query = st.chat_input("Say something")
 
 if user_query:
     with st.spinner("Getting your query sorted..."):
-        response = requests.get(f"https://api.nodrik.com/app/generate?user_query={user_query}%21&state_id={state_id}")
+        response = requests.get(f"{BASE_URL}generate?user_query={user_query}%21&state_id={state_id}")
         user_result = response.json()
         
     st.subheader("  ")
