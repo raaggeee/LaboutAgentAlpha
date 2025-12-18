@@ -13,12 +13,13 @@ config = {"configurable": {"thread_id": state_id}}
 
 
 st.header("_Labour_:blue[Agent]")
-user_input = st.text_input(label="Enter your query")
+# user_input = st.text_input(label="Enter your query")
+user_query = st.chat_input("Say something")
 
-if st.button("Run"):
+if user_query:
     with st.spinner("Getting your query sorted..."):
-        response = requests.get(f"https://api.nodrik.com/app/generate?user_query={user_input}%21&state_id={state_id}")
+        response = requests.get(f"https://api.nodrik.com/app/generate?user_query={user_query}%21&state_id={state_id}")
         user_result = response.json()
         
-    st.subheader("Explaination")
+    st.subheader("  ")
     st.write(user_result["message"])
