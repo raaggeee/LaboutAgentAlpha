@@ -24,8 +24,8 @@ user_query = st.chat_input("Say something")
 if user_query:
     with st.spinner("Getting your query sorted..."):
         st.session_state.messages.append({"role":"user", "content":user_query})
-        response_post = requests.post(f"{BASE_URL}post_request?state_id={state_id}", json=messages)
-        response = requests.get(f"{BASE_URL}generate?user_query={user_query}%21&state_id={state_id}")
+        # response_post = requests.post(f"{BASE_URL}post_request?state_id={state_id}", json=messages)
+        response = requests.get(f"{BASE_URL}generate?user_query={user_query}&state_id={state_id}")
         user_result = response.json()
         st.session_state.messages.append({"role":"assistant", "content":user_result["message"]})
         
