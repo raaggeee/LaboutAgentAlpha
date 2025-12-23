@@ -25,15 +25,15 @@ for message in messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
-if prompt := st.chat_input(f"Write you queries regarding IR Code 2020."):
-    st.session_state.messages.append({"role":"user", "content":prompt})
+if user_query := st.chat_input(f"Write you queries regarding IR Code 2020."):
+    st.session_state.messages.append({"role":"user", "content":user_query})
     response_post = requests.post(f"{BASE_URL}post_request?state_id={state_id}", json=messages)
 
     with st.chat_message("user"):
-        st.markdown("prompt")
+        st.markdown(f"{user_query}")
 
-    response_get = requests.get(f"{BASE_URL}generate?user_query={prompt}&state_id={state_id}")
-    query_result = response_get["message"]
+    response_get = requests.get(f"{BASE_URL}generate?user_query={user_query}&state_id={state_id}")
+    query_result = response_get.json()["message"]
     with st.chat_message("assistant"):
         response = st.write_stream(query_result)
 
