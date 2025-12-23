@@ -38,8 +38,11 @@ if user_query := st.chat_input(f"Write you queries regarding IR Code 2020."):
     with st.chat_message("user"):
         st.markdown(f"{user_query}")
 
-    response_get = requests.get(f"{BASE_URL}generate?user_query={user_query}&state_id={state_id}")
-    query_result = response_get.json()["message"]
+    with st.chat_message("assistant"):
+        with st.spinner("Thinking..."):
+            response_get = requests.get(f"{BASE_URL}generate?user_query={user_query}&state_id={state_id}")
+            query_result = response_get.json()["message"]
+
     with st.chat_message("assistant"):
         response = st.write_stream(stream_generator(query_result))
 
