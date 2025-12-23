@@ -34,7 +34,7 @@ for message in messages:
 if user_query := st.chat_input(f"Write you queries regarding IR Code 2020."):
     st.session_state.messages.append({"role":"user", "content":user_query})
     response_post = requests.post(f"{BASE_URL}post_request?state_id={state_id}", json=messages)
-    post_result = response_post.get().get("status")
+    post_result = response_post.json().get("status")
 
     with st.chat_message("user"):
         st.markdown(f"{user_query}")    
@@ -43,7 +43,7 @@ if user_query := st.chat_input(f"Write you queries regarding IR Code 2020."):
         with st.spinner("Thinking..."):
             if not post_result == "ok":
                 st.markdown(f"Oh No! Server seems down for a while!🫨")
-                
+
             response_get = requests.get(f"{BASE_URL}generate?user_query={user_query}&state_id={state_id}")
             query_result = response_get.json().get("message", "")
 
