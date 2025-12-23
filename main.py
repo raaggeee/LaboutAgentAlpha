@@ -43,8 +43,8 @@ if user_query := st.chat_input(f"Write you queries regarding IR Code 2020."):
             response_get = requests.get(f"{BASE_URL}generate?user_query={user_query}&state_id={state_id}")
             query_result = response_get.json()["message"]
 
-        response = st.write_stream(stream_generator(query_result))
-
+        response = st.markdown(query_result)
+    
 
     st.session_state.messages.append({"role":"assistant", "content":query_result})
 
