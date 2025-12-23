@@ -2,7 +2,13 @@
 import streamlit as st
 import uuid
 import requests
+import time
 BASE_URL = st.secrets["BASE_URL"]
+
+def stream_generator(message):
+    for word in message.split():
+        yield word + " "
+        time.sleep(0.2)
 
 if "uid" not in st.session_state:
     st.session_state.uid = str(uuid.uuid4())
@@ -35,7 +41,7 @@ if user_query := st.chat_input(f"Write you queries regarding IR Code 2020."):
     response_get = requests.get(f"{BASE_URL}generate?user_query={user_query}&state_id={state_id}")
     query_result = response_get.json()["message"]
     with st.chat_message("assistant"):
-        response = st.write_stream(query_result)
+        response = st.write_stream(stream_generator(query_result))
 
     st.session_state.messages.append({"role":"assistant", "content":query_result})
 
