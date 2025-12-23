@@ -41,11 +41,13 @@ if user_query := st.chat_input(f"Write you queries regarding IR Code 2020."):
     with st.chat_message("assistant"):
         with st.spinner("Thinking..."):
             response_get = requests.get(f"{BASE_URL}generate?user_query={user_query}&state_id={state_id}")
-            query_result = response_get.json()["message"]
+            query_result = response_get.json().get("message", "")
 
-        response = st.markdown(query_result)
+            if not query_result:
+                st.markdown(f"Oh No! Server seems down for a while!")
+
+        st.markdown(query_result)
     
-
     st.session_state.messages.append({"role":"assistant", "content":query_result})
 
 # if user_query:
