@@ -35,16 +35,6 @@ for message in messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
-option = st.selectbox(
-            "For Code specific answer",
-            ("Industry Relation", "Social Security", "Wages", "Occupation, Safety, Health and Working Condition"),
-            index=None,
-            placeholder="Select a Labour Law Code..."
-            
-        )
-
-send_settings = requests.post(f"{BASE_URL}send_settings?state_id={state_id}&conversation_code={option}")
-
 
 # st.write(options)
 
@@ -71,6 +61,16 @@ if user_query := st.chat_input(f"Write you queries regarding IR Code 2020."):
         st.markdown(query_result)
     
     st.session_state.messages.append({"role":"assistant", "content":query_result})
+
+option = st.selectbox(
+            "For Code specific answer",
+            ("Industry Relation", "Social Security", "Wages", "Occupation, Safety, Health and Working Condition"),
+            index=None,
+            placeholder="Select a Labour Law Code..."
+            
+        )
+
+send_settings = requests.post(f"{BASE_URL}send_settings?state_id={state_id}&conversation_code={option}")
 
 # if user_query:
 #     with st.spinner("Getting your query sorted..."):
