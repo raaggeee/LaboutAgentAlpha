@@ -3,7 +3,8 @@ import streamlit as st
 import uuid
 import requests
 import time
-BASE_URL = st.secrets["BASE_URL"]
+# BASE_URL = st.secrets["BASE_URL"]
+BASE_URL = "https://api.nodrik.com/app/"
 
 def stream_generator(message):
     for word in message.split():
@@ -15,6 +16,9 @@ if "uid" not in st.session_state:
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
+
+if "curr_code" not in st.session_state:
+    st.session_state.curr_code = ""
 
 state_id = st.session_state.uid
 messages = st.session_state.messages
@@ -31,7 +35,21 @@ for message in messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
+option = st.selectbox(
+            "For Code specific answer",
+            ("Industry Relation", "Social Security", "Wages", "Occupation, Safety, Health and Working Condition"),
+            index=None,
+            placeholder="Select a Labour Law Code..."
+            
+        )
+
+send_settings = requests.post(f"{BASE_URL}send_settings?state_id={state_id}&conversation_code={option}")
+
+
+# st.write(options)
+
 if user_query := st.chat_input(f"Write you queries regarding IR Code 2020."):
+    
     st.session_state.messages.append({"role":"user", "content":user_query})
     response_post = requests.post(f"{BASE_URL}post_request?state_id={state_id}", json=messages)
     post_result = response_post.json().get("status")
@@ -41,7 +59,7 @@ if user_query := st.chat_input(f"Write you queries regarding IR Code 2020."):
 
     with st.chat_message("assistant"):
         with st.spinner("Thinking..."):
-            if not post_result == "ok":
+            if post_result != "ok":
                 st.markdown(f"Oh No! Server seems down for a while!🫨")
 
             response_get = requests.get(f"{BASE_URL}generate?user_query={user_query}&state_id={state_id}")
