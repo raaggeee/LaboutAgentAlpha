@@ -38,7 +38,7 @@ for message in messages:
 
 # st.write(options)
 
-if user_query := st.chat_input(f"Write you queries regarding IR Code 2020."):
+if user_query := st.chat_input(f"Write you queries Labour Laws..."):
     
     st.session_state.messages.append({"role":"user", "content":user_query})
     response_post = requests.post(f"{BASE_URL}post_request?state_id={state_id}", json=messages)
