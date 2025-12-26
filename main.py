@@ -14,7 +14,7 @@ if not st.user.is_logged_in:
     st.header("_Labour_:blue[Agent]")
     st.write("Still juggling between multiple Labour Law Websites and Documents?🫨")
     st.write("Try LabourAgent. Your one stop Labour Law guide.")
-    st.write("Login to try out!")
+    st.write("Login to try")
 
     if st.button("Login with Google"):
         st.login("google")
@@ -37,7 +37,7 @@ if "curr_code" not in st.session_state:
     st.session_state.curr_code = ""
 
 state_id = st.session_state.uid
-st.secrets["session_id"] = state_id
+st.secrets["cookie_secret"] = state_id
 messages = st.session_state.messages
 print(state_id)
 
