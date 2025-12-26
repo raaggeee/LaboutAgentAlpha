@@ -7,8 +7,6 @@ import authlib
 
 BASE_URL = st.secrets["BASE_URL"]
 
-query_params = st.query_params
-
 if not st.user.is_logged_in:
     st.header("_Labour_:blue[Agent]")
     st.write("Still juggling between multiple Labour Law Websites and Documents?🫨")
@@ -40,10 +38,11 @@ if "messages" not in st.session_state:
 if "curr_code" not in st.session_state:
     st.session_state.curr_code = ""
 
+query_params = st.query_params
 state_id = st.session_state.uid
 messages = st.session_state.messages
 print(state_id)
-response_login = requests.post(f"{BASE_URL}login?user_login={query_params}")
+response_login = requests.post(f"{BASE_URL}login?user_login={f"query_params"}")
 
 config = {"configurable": {"thread_id": state_id}}
 
