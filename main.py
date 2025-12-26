@@ -7,6 +7,8 @@ import authlib
 
 BASE_URL = st.secrets["BASE_URL"]
 
+query_params = st.query_params
+print(query_params)
 
 if not st.user.is_logged_in:
     st.header("_Labour_:blue[Agent]")
