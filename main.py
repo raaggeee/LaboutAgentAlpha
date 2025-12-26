@@ -3,8 +3,7 @@ import streamlit as st
 import uuid
 import requests
 import time
-# BASE_URL = st.secrets["BASE_URL"]
-BASE_URL = "https://api.nodrik.com/app/"
+BASE_URL = st.secrets["BASE_URL"]
 
 def stream_generator(message):
     for word in message.split():
@@ -21,6 +20,7 @@ if "curr_code" not in st.session_state:
     st.session_state.curr_code = ""
 
 state_id = st.session_state.uid
+st.secrets["session_id"] = state_id
 messages = st.session_state.messages
 print(state_id)
 
