@@ -14,7 +14,8 @@ if not st.user.is_logged_in:
     st.header("_Labour_:blue[Agent]")
     st.write("Still juggling between multiple Labour Law Websites and Documents?🫨")
     st.write("Try LabourAgent. Your one stop Labour Law guide.")
-    st.write("Login to try")
+    st.header("What is LabourAgent?")
+    st.write("LabourAgent is a Labour Law Agent. This agent knows about all the ")
 
     if st.button("Login with Google"):
         st.login("google")
