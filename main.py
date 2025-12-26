@@ -52,7 +52,8 @@ for message in messages:
         st.markdown(message["content"])
 
 
-# st.write(options)
+#for logout
+st.button("Log out", on_click=st.logout)
 
 if user_query := st.chat_input(f"Write you queries Labour Laws..."):
     
