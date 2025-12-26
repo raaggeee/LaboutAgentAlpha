@@ -15,8 +15,12 @@ if not st.user.is_logged_in:
     st.write("Still juggling between multiple Labour Law Websites and Documents?🫨")
     st.write("Try LabourAgent. Your one stop Labour Law guide.")
     st.subheader("What is LabourAgent?")
-    st.write("LabourAgent is a Labour Law Agent. This agent knows about all the ")
-
+    st.write("LabourAgent is a Labour Law :blue[Agent]. It is an interactive way to know and apply Labour Law.")
+    st.write("It is a one stop :blue[Agent] which provides:")
+    st.markdown("- New and Updated Labour Law knowledge base.")
+    st.markdown("- All Acts, Laws, Notifications and Rule related to Central and State Labour Laws.")
+    st.markdown("- Interactive way to understand and apply Labour Laws in Corporate.")
+    
     if st.button("Login with Google"):
         st.login("google")
 
