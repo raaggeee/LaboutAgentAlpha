@@ -20,7 +20,7 @@ if not st.user.is_logged_in:
     st.markdown("- New and Updated Labour Law knowledge base.")
     st.markdown("- All Acts, Laws, Notifications and Rule related to Central and State Labour Laws.")
     st.markdown("- Interactive way to understand and apply Labour Laws in Corporate.")
-    
+
     if st.button("Login with Google"):
         st.login("google")
 
@@ -86,7 +86,7 @@ if user_query := st.chat_input(f"Write you queries Labour Laws..."):
 
 option = st.selectbox(
             "For Code specific answer",
-            ("Industry Relation", "Social Security", "Wages", "Occupation, Safety, Health and Working Condition"),
+            ("Industry Relation Codes, 2020", "Codes on Social Security, 2020", "Codes on Wages, 2019", "The Occupation, Safety, Health and Working Condition Code, 2020"),
             index=None,
             placeholder="Select a Labour Law Code..."
             
