@@ -37,7 +37,6 @@ if "curr_code" not in st.session_state:
     st.session_state.curr_code = ""
 
 state_id = st.session_state.uid
-st.secrets["cookie_secret"] = state_id
 messages = st.session_state.messages
 print(state_id)
 
