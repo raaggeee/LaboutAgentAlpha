@@ -8,7 +8,6 @@ import authlib
 BASE_URL = st.secrets["BASE_URL"]
 
 query_params = st.query_params
-print(query_params)
 
 if not st.user.is_logged_in:
     st.header("_Labour_:blue[Agent]")
@@ -44,6 +43,7 @@ if "curr_code" not in st.session_state:
 state_id = st.session_state.uid
 messages = st.session_state.messages
 print(state_id)
+response_login = requests.post(f"{BASE_URL}login?user_login={query_params}")
 
 config = {"configurable": {"thread_id": state_id}}
 
