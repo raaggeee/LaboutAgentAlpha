@@ -3,6 +3,8 @@ import streamlit as st
 import uuid
 import requests
 import time
+import authlib
+
 BASE_URL = st.secrets["BASE_URL"]
 
 
@@ -12,7 +14,7 @@ if not st.user.is_logged_in:
 
     st.stop()
 
-    
+
 def stream_generator(message):
     for word in message.split():
         yield word + " "
