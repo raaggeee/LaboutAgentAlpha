@@ -12,7 +12,10 @@ print(query_params)
 
 if not st.user.is_logged_in:
     st.header("_Labour_:blue[Agent]")
-    st.write("Are you still juggling around with multiple ")
+    st.write("Still juggling between multiple Labour Law Websites and Documents?🫨")
+    st.write("Try LabourAgent. Your one stop Labour Law guide.")
+    st.write("Login to try out!")
+
     if st.button("Login with Google"):
         st.login("google")
 
