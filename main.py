@@ -5,6 +5,14 @@ import requests
 import time
 BASE_URL = st.secrets["BASE_URL"]
 
+
+if not st.user.is_logged_in:
+    if st.button("Login with Google"):
+        st.login("google")
+
+    st.stop()
+
+    
 def stream_generator(message):
     for word in message.split():
         yield word + " "
