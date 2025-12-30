@@ -38,8 +38,8 @@ if "messages" not in st.session_state:
 if "curr_code" not in st.session_state:
     st.session_state.curr_code = ""
 
-query_params = st.user.to_dict()
-print(query_params)
+headers = st.context.headers
+st.write(headers)
 state_id = st.session_state.uid
 messages = st.session_state.messages
 print(state_id)
