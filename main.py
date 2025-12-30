@@ -60,26 +60,29 @@ for message in messages:
 if user_query := st.chat_input(f"Write you queries Labour Laws..."):
     
     st.session_state.messages.append({"role":"user", "content":user_query})
-    response_post = requests.post(f"{BASE_URL}post_request?state_id={state_id}", json=messages)
-    post_result = response_post.json().get("status")
+    if response_post := requests.post(f"{BASE_URL}post_request?state_id={state_id}", json=messages):
+        post_result = response_post.json().get("status")
 
-    with st.chat_message("user"):
-        st.markdown(f"{user_query}")    
+        with st.chat_message("user"):
+            st.markdown(f"{user_query}")    
 
-    with st.chat_message("assistant"):
-        with st.spinner("Thinking..."):
-            if post_result != "ok":
-                st.markdown(f"Oh No! Server seems down for a while!🫨")
+        with st.chat_message("assistant"):
+            with st.spinner("Thinking..."):
+                if post_result != "ok":
+                    st.markdown(f"Oh No! Please try again!")
 
-            response_get = requests.get(f"{BASE_URL}generate?user_query={user_query}&state_id={state_id}")
-            query_result = response_get.json().get("message", "")
+                if response_get := requests.get(f"{BASE_URL}generate?user_query={user_query}&state_id={state_id}"):
+                    query_result = response_get.json().get("message", "")
 
-        if not query_result:
-            st.markdown(f"Oh No! Server seems down for a while!🫨")
+                else:
+                    st.markdown(f"Oh No! Please try again! 🔂")
 
-        st.markdown(query_result)
-    
-    st.session_state.messages.append({"role":"assistant", "content":query_result})
+            st.markdown(query_result)
+        
+        st.session_state.messages.append({"role":"assistant", "content":query_result})
+
+    else:
+        st.markdown(f"Oh No! Server seems down for a while!🫨")
 
 option = st.selectbox(
             "For Code specific answer",
