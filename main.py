@@ -42,7 +42,7 @@ query_params = st.user
 state_id = st.session_state.uid
 messages = st.session_state.messages
 print(state_id)
-response_login = requests.post(f"{BASE_URL}login?user_login={f"query_params"}")
+response_login = requests.post(f"{BASE_URL}login?user_login={f"{query_params}"}")
 
 config = {"configurable": {"thread_id": state_id}}
 
@@ -55,9 +55,6 @@ for message in messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
-
-#for logout
-st.button("Log out", on_click=st.logout)
 
 if user_query := st.chat_input(f"Write you queries Labour Laws..."):
     
@@ -92,6 +89,8 @@ option = st.selectbox(
         )
 
 send_settings = requests.post(f"{BASE_URL}send_settings?state_id={state_id}&conversation_code={option}")
+#for logout
+st.button("Log out", on_click=st.logout)
 
 # if user_query:
 #     with st.spinner("Getting your query sorted..."):
