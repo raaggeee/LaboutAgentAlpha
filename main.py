@@ -38,7 +38,7 @@ if "messages" not in st.session_state:
 if "curr_code" not in st.session_state:
     st.session_state.curr_code = ""
 
-state_id = st.session_state.uid
+state_id = st.user.email
 messages = st.session_state.messages
 # print(state_id)
 data = {}
@@ -73,8 +73,8 @@ if user_query := st.chat_input(f"Write you queries Labour Laws..."):
             if post_result != "ok":
                 st.markdown(f"Oh No! Server seems down for a while!🫨")
 
-            response_get = requests.get(f"{BASE_URL}generate?user_query={user_query}&state_id={state_id}")
-            query_result = response_get.json().get("message", "")
+            response = requests.post(f"{BASE_URL}chat?state_id", json={"state_id": state_id, "messages":messages, "question": user_query})
+            query_result = response.json().get("message", "")
 
         if not query_result:
             st.markdown(f"Oh No! Server seems down for a while!🫨")
