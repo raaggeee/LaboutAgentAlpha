@@ -38,11 +38,11 @@ if "messages" not in st.session_state:
 if "curr_code" not in st.session_state:
     st.session_state.curr_code = ""
 
-query_params = st.user
+st.write(st.user)
 state_id = st.session_state.uid
 messages = st.session_state.messages
 # print(state_id)
-response_login = requests.post(f"{BASE_URL}login", json=[query_params])
+response_login = requests.post(f"{BASE_URL}login", json={k: st.user(k) for k in ["email"]})
 
 config = {"configurable": {"thread_id": state_id}}
 
