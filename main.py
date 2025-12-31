@@ -38,22 +38,16 @@ if "messages" not in st.session_state:
 if "curr_code" not in st.session_state:
     st.session_state.curr_code = ""
 
-if "message_limit" not in st.session_state:
-    st.session_state.limit = 0
-
-headers = st.context.headers    
+query_params = st.user.to_dict()
 state_id = st.session_state.uid
 messages = st.session_state.messages
 print(state_id)
-response_login = requests.post(f"{BASE_URL}login", json=headers)
+response_login = requests.post(f"{BASE_URL}login", json=query_params)
 
 config = {"configurable": {"thread_id": state_id}}
 
 
-st.header("_Labour_:blue[Agent] - Beta")
-st.write(f"Welcome to _Labour_:blue[Agent]. Your can ask upto {st.session_state.limit} in 24 hours.")
-st.write(f"LabourAgent is still under development. It might sometimes give inappropriate results.")
-
+st.header("_Labour_:blue[Agent]")
 # user_input = st.text_input(label="Enter your query")
 # user_query = st.chat_input("Say something")
 
@@ -61,58 +55,40 @@ for message in messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
-if st.session_state.limit < 10:
-    if user_query := st.chat_input(f"Write you queries Labour Laws..."):
-        
-        st.session_state.messages.append({"role":"user", "content":user_query})
-        if response_post := requests.post(f"{BASE_URL}post_request?state_id={state_id}", json=messages):
-            post_result = response_post.json().get("status")
 
-            with st.chat_message("user"):
-                st.markdown(f"{user_query}")    
+if user_query := st.chat_input(f"Write you queries Labour Laws..."):
+    
+    st.session_state.messages.append({"role":"user", "content":user_query})
+    response_post = requests.post(f"{BASE_URL}post_request?state_id={state_id}", json=messages)
+    post_result = response_post.json().get("status")
 
-            with st.chat_message("assistant"):
-                with st.spinner("Thinking..."):
-                    if post_result != "ok":
-                        st.markdown(f"Oh No! Please try again!")
+    with st.chat_message("user"):
+        st.markdown(f"{user_query}")    
 
-                    if response_get := requests.get(f"{BASE_URL}generate?user_query={user_query}&state_id={state_id}"):
-                        query_result = response_get.json().get("message", "")
+    with st.chat_message("assistant"):
+        with st.spinner("Thinking..."):
+            if post_result != "ok":
+                st.markdown(f"Oh No! Server seems down for a while!🫨")
 
-                    else:
-                        st.markdown(f"Oh No! Please try again! 🔂")
+            response_get = requests.get(f"{BASE_URL}generate?user_query={user_query}&state_id={state_id}")
+            query_result = response_get.json().get("message", "")
 
-                st.markdown(query_result)
-            
-            st.session_state.messages.append({"role":"assistant", "content":query_result})
-
-            st.session_state.limit += 1
-
-        else:
+        if not query_result:
             st.markdown(f"Oh No! Server seems down for a while!🫨")
 
-    option = st.selectbox(
-                "For Code specific answer",
-                ("The Industry Relation Codes, 2020", "The Codes on Social Security, 2020", "The Codes on Wages, 2019", "The Occupation, Safety, Health and Working Condition Code, 2020"),
-                index=None,
-                placeholder="Select a Labour Law Code..."
-                
-            )
-
-    send_settings = requests.post(f"{BASE_URL}send_settings?state_id={state_id}&conversation_code={option}")
-
-else:
-    st.write("You have consumed you daily 10 requests...")
-    st.write("Please provide a feedback")
-    with st.form("my_form"):
-        st.write("Feedback: It will help us improve more.")
-        name = st.text_input("Your Name")
-        contact_no = st.text_input("Contact Number")
-        experience = st.text_input("How was your experience today?")
-        glitch = st.text_input("Any issues?")
-        comments = st.text_input("")
-
+        st.markdown(query_result)
     
+    st.session_state.messages.append({"role":"assistant", "content":query_result})
+
+option = st.selectbox(
+            "For Code specific answer",
+            ("The Industry Relation Codes, 2020", "The Codes on Social Security, 2020", "The Codes on Wages, 2019", "The Occupation, Safety, Health and Working Condition Code, 2020"),
+            index=None,
+            placeholder="Select a Labour Law Code..."
+            
+        )
+
+send_settings = requests.post(f"{BASE_URL}send_settings?state_id={state_id}&conversation_code={option}")
 #for logout
 st.button("Log out", on_click=st.logout)
 
