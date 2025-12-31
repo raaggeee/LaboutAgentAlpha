@@ -40,7 +40,7 @@ if "curr_code" not in st.session_state:
 
 state_id = st.session_state.uid
 messages = st.session_state.messages
-# print(state_id)
+print(st.user)
 response_login = requests.post(f"{BASE_URL}login", json={k: st.user.get(k) for k in ["is_logged_in", "given_name", "email", "email_verified"]})
 
 config = {"configurable": {"thread_id": state_id}}
