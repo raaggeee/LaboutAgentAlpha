@@ -82,8 +82,7 @@ if user_query := st.chat_input(f"Write you queries Labour Laws..."):
 
 option = st.selectbox(
             "For Code specific answer",
-            ("The Industry Relation Codes, 2020", "The Codes on Social Security, 2020", "The Codes on Wages, 2019", "The Occupation, Safety, Health and Working Condition Code, 2020"),
-            index=None,
+            ("Introduction to Labour Codes", "The Industry Relation Codes, 2020", "The Codes on Social Security, 2020", "The Codes on Wages, 2019", "The Occupation, Safety, Health and Working Condition Code, 2020"),
             placeholder="Select a Labour Law Code..."
             
         )
