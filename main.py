@@ -68,8 +68,6 @@ if user_query := st.chat_input(f"Write you queries Labour Laws..."):
 
     with st.chat_message("assistant"):
         with st.spinner("Thinking..."):
-            if post_result != "ok":
-                st.markdown(f"Oh No! Server seems down for a while!🫨")
 
             response = requests.post(f"{BASE_URL}chat?state_id", json={"state_id": state_id, "messages":messages, "question": user_query})
             query_result = response.json().get("message", "")
