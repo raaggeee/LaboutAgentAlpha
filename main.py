@@ -42,7 +42,7 @@ query_params = st.user
 state_id = st.session_state.uid
 messages = st.session_state.messages
 # print(state_id)
-response_login = requests.post(f"{BASE_URL}login", json=query_params)
+response_login = requests.post(f"{BASE_URL}login", json=f"{query_params}")
 
 config = {"configurable": {"thread_id": state_id}}
 
