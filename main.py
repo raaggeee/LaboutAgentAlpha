@@ -44,9 +44,8 @@ messages = st.session_state.messages
 data = {}
 for k in ["is_logged_in", "given_name", "email", "email_verified"]:
     data[k] = st.user.get(k)
-st.write(data)
 
-response_login = requests.post(f"{BASE_URL}login", json={k: st.user.get(k) for k in ["is_logged_in", "given_name", "email", "email_verified"]})
+response_login = requests.post(f"{BASE_URL}login", json=data)
 
 config = {"configurable": {"thread_id": state_id}}
 
