@@ -51,7 +51,6 @@ for k in ["is_logged_in", "given_name", "email", "email_verified"]:
 response_login = requests.post(f"{BASE_URL}login", json=[data])
 #set limit
 user_count = response_login.json().get("message", "")
-count = user_count
 st.session_state.limit = count
 
 
@@ -86,9 +85,8 @@ if st.session_state.limit != 10:
             st.markdown(query_result)
         
         st.session_state.messages.append({"role":"assistant", "content":query_result})
-        count += 1
-        st.session_state.limit = count
-else:
+
+if st.session_state.limit == 10:
     feedback = {}
     with st.form("Feedback_Form"):
         st.write("Thanks for the conversation.")
