@@ -51,7 +51,7 @@ for k in ["is_logged_in", "given_name", "email", "email_verified"]:
 response_login = requests.post(f"{BASE_URL}login", json=[data])
 #set limit
 user_count = response_login.json().get("message", "")
-st.session_state.limit = count
+st.session_state.limit = user_count
 
 
 config = {"configurable": {"thread_id": state_id}}
