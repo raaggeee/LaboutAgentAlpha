@@ -95,7 +95,7 @@ if st.session_state.limit == 10:
 
 option_states = st.selectbox(
     "For State specific answer",
-    ("Center", "Chandigarh", "Delhi", "Haryana", "Rajasthan", "Telangana", "Uttar Pradesh"),
+    ("Central", "Delhi", "Haryana", "Rajasthan", "Telangana", "Uttar Pradesh"),
     placeholder="Select a State..."
     
 )
