@@ -131,7 +131,7 @@ else:
     option_json = {
         "state_id": state_id,
         "india_state": option_states,
-        "conversation_code": None,
+        "conversation_code": "",
         "estb_type":"shop_and_comm_estd"
     }
 
