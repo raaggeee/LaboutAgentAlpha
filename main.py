@@ -94,24 +94,47 @@ if st.session_state.limit == 10:
         phone_no = st.text_input
 
 option_states = st.selectbox(
-    "For State specific answer",
-    ("Central", "Delhi", "Haryana", "Rajasthan", "Telangana", "Uttar Pradesh"),
-    placeholder="Select a State..."
-    
-)
-        
-option_codes = st.selectbox(
-            "For Code specific answer",
-            ("Introduction to Labour Codes", "The Industry Relation Codes, 2020", "The Codes on Social Security, 2020", "The Codes on Wages, 2019", "The Occupation, Safety, Health and Working Condition Code, 2020"),
-            placeholder="Select a Labour Law Code..."
-            
+    "Select industry type",
+    ("Factory/Industry", "Shop and Commercial Establishments"),
+    placeholder="Select Industry Type"
 )
 
-option_json = {
-    "state_id": state_id,
-    "conversation_code": option_codes,
-    "india_state": option_states
-}
+if option_states == "Factory/Industry":
+    option_states = st.selectbox(
+        "For State specific answer",
+        ("Central", "Delhi", "Haryana", "Rajasthan", "Telangana", "Uttar Pradesh"),
+        placeholder="Select a State..."
+        
+    )
+        
+    option_codes = st.selectbox(
+                "For Code specific answer",
+                ("Introduction to Labour Codes", "The Industry Relation Codes, 2020", "The Codes on Social Security, 2020", "The Codes on Wages, 2019", "The Occupation, Safety, Health and Working Condition Code, 2020"),
+                placeholder="Select a Labour Law Code..."
+                
+    )
+
+    option_json = {
+        "state_id": state_id,
+        "conversation_code": option_codes,
+        "india_state": option_states,
+        "estb_type": "factory"
+    }
+
+else:
+    option_states = st.selectbox(
+        "For State specific answer",
+        ("Haryana"),
+        placeholder="Select a State..."
+    )
+    
+    option_json = {
+        "state_id": state_id,
+        "india_state": option_states,
+        "conversation_code": None,
+        "estb_type":"shop_and_comm_estd"
+    }
+
 send_settings = requests.post(f"{BASE_URL}send_settings", json=option_json)
 #for logout
 st.button("Log out", on_click=st.logout)
