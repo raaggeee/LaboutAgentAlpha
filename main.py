@@ -48,7 +48,7 @@ data = {}
 for k in ["is_logged_in", "given_name", "email", "email_verified"]:
     data[k] = st.user.get(k)
 
-response_login = requests.post(f"{BASE_URL}login", json=[data])
+response_login = requests.post(f"{BASE_URL}login")
 #set limit
 user_count = response_login.json().get("message", "")
 st.session_state.limit = user_count
