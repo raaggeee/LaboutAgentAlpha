@@ -94,7 +94,7 @@ if st.session_state.limit == 10:
         phone_no = st.text_input
 
 option_states = st.selectbox(
-    "Select industry type",
+    "Select Establishment type",
     ("Factory/Industry", "Shop and Commercial Establishments"),
     placeholder="Select Industry Type"
 )
