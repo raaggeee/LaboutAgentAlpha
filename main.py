@@ -100,19 +100,30 @@ option_states = st.selectbox(
 )
 
 if option_states == "Factory/Industry":
-    option_states = st.selectbox(
-        "For State specific answer",
-        ("Central", "Delhi", "Haryana", "Rajasthan", "Telangana", "Uttar Pradesh"),
-        placeholder="Select a State..."
-        
-    )
-        
     option_codes = st.selectbox(
                 "For Code specific answer",
-                ("Introduction to Labour Codes", "The Industry Relation Codes, 2020", "The Codes on Social Security, 2020", "The Codes on Wages, 2019", "The Occupation, Safety, Health and Working Condition Code, 2020"),
+                ("Introduction to Labour Codes", "The Industry Relation Codes, 2020", "The Codes on Social Security, 2020", "The Codes on Wages, 2019", "The Occupation, Safety, Health and Working Condition Code, 2020", "Labour Welfare Rules"),
                 placeholder="Select a Labour Law Code..."
                 
     )
+
+    if option_codes == "Labour Welfare Rules":
+        option_states = st.selectbox(
+            "For State specific answer",
+            ("Delhi", "Haryana","Uttar Pradesh"),
+            placeholder="Select a State..."
+            
+        )
+
+    else:
+        option_states = st.selectbox(
+            "For State specific answer",
+            ("Central", "Delhi", "Haryana", "Rajasthan", "Telangana", "Uttar Pradesh"),
+            placeholder="Select a State..."
+            
+        )
+        
+    
 
     option_json = {
         "state_id": state_id,
