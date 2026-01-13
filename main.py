@@ -118,7 +118,7 @@ if option_states == "Factory/Industry":
     elif option_codes == "The Codes on Wages, 2019":
         option_states = st.selectbox(
             "For State specific answer",
-            ("Delhi", "Haryana"),
+            ("Central", "Delhi", "Haryana"),
             placeholder="Select a State..."
             
         )
