@@ -138,7 +138,7 @@ if option_states == "Factory/Industry":
             placeholder="Select a State..."
             
         )
-        if option_states == "Central":
+        if option_states == "Central" and option_codes != "Introduction to Labour Codes":
             option_law_type = st.selectbox(
                 "Select the law type",
                 ("Codes", "Rules"),
