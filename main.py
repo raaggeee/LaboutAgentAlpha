@@ -144,6 +144,9 @@ if option_states == "Factory/Industry":
                 ("Codes", "Rules"),
                 placeholder="Select a law type..."
             )
+
+        if option_codes == "Introduction to Labour Codes":
+            option_law_type = "Codes"
         
     
 
