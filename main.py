@@ -99,6 +99,8 @@ option_states = st.selectbox(
     placeholder="Select Industry Type"
 )
 
+option_law_type = "Rules"
+
 if option_states == "Factory/Industry":
     option_codes = st.selectbox(
                 "For Code specific answer",
@@ -120,8 +122,14 @@ if option_states == "Factory/Industry":
             "For State specific answer",
             ("Central", "Delhi", "Haryana"),
             placeholder="Select a State..."
-            
         )
+
+        if option_states == "Central":
+            option_law_type = st.selectbox(
+                "Select the law type",
+                ("Codes", "Rules"),
+                placeholder="Select a law type..."
+            )
 
     else:
         option_states = st.selectbox(
@@ -130,6 +138,12 @@ if option_states == "Factory/Industry":
             placeholder="Select a State..."
             
         )
+        if option_states == "Central":
+            option_law_type = st.selectbox(
+                "Select the law type",
+                ("Codes", "Rules"),
+                placeholder="Select a law type..."
+            )
         
     
 
@@ -137,7 +151,8 @@ if option_states == "Factory/Industry":
         "state_id": state_id,
         "conversation_code": option_codes,
         "india_state": option_states,
-        "estb_type": "factory"
+        "estb_type": "factory",
+        "law_type": option_law_type
     }
 
 else:
