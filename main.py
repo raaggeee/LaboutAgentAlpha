@@ -124,12 +124,12 @@ if option_states == "Factory/Industry":
             placeholder="Select a State..."
         )
 
-        if option_states == "Central":
-            option_law_type = st.selectbox(
-                "Select the law type",
-                ("Codes", "Rules"),
-                placeholder="Select a law type..."
-            )
+        # if option_states == "Central":
+        #     option_law_type = st.selectbox(
+        #         "Select the law type",
+        #         ("Codes", "Rules"),
+        #         placeholder="Select a law type..."
+        #     )
 
     else:
         option_states = st.selectbox(
@@ -138,15 +138,15 @@ if option_states == "Factory/Industry":
             placeholder="Select a State..."
             
         )
-        if option_states == "Central" and option_codes != "Introduction to Labour Codes":
-            option_law_type = st.selectbox(
-                "Select the law type",
-                ("Codes", "Rules"),
-                placeholder="Select a law type..."
-            )
+        # if option_states == "Central" and option_codes != "Introduction to Labour Codes":
+        #     option_law_type = st.selectbox(
+        #         "Select the law type",
+        #         ("Codes", "Rules"),
+        #         placeholder="Select a law type..."
+        #     )
 
-        if option_codes == "Introduction to Labour Codes":
-            option_law_type = "Codes"
+        # if option_codes == "Introduction to Labour Codes":
+        #     option_law_type = "Codes"
         
     
 
