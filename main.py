@@ -104,7 +104,7 @@ option_law_type = "Rules"
 if option_states == "Factory/Industry":
     option_codes = st.selectbox(
                 "For Code specific answer",
-                ("Introduction to Labour Codes", "The Industry Relation Codes, 2020", "The Codes on Social Security, 2020", "The Codes on Wages, 2019", "The Occupation, Safety, Health and Working Condition Code, 2020", "Labour Welfare Rules"),
+                ("Introduction to Labour Codes", "The Industry Relation Codes, 2020", "The Codes on Social Security, 2020", "The Codes on Wages, 2019", "The Occupation, Safety, Health and Working Condition Code, 2020"),
                 placeholder="Select a Labour Law Code..."
                 
     )
