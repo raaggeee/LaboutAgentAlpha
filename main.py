@@ -169,7 +169,8 @@ else:
         "state_id": state_id,
         "india_state": option_states,
         "conversation_code": "",
-        "estb_type":"shop_and_comm_estd"
+        "estb_type":"shop_and_comm_estd",
+        "law_type":""
     }
 
 send_settings = requests.post(f"{BASE_URL}send_settings", json=option_json)
