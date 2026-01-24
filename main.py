@@ -132,9 +132,9 @@ if option_type == "Factory/Industry":
             )
 
 
-    elif option_codes == "POSH Act, 2013":
+    elif (option_codes == "POSH Act, 2013" or option_codes == "Employee Provident Funds Scheme, 1952" or option_codes == "Employee State Insurance Act, 1948"):
         option_law_type = "Codes"
-        option_states = None
+        option_states = ""
 
 
     else:
