@@ -93,7 +93,7 @@ if st.session_state.limit == 10:
         name = st.text_input("First Name")
         phone_no = st.text_input
 
-option_states = st.selectbox(
+option_type = st.selectbox(
     "Select Establishment type",
     ("Factory/Industry", "Shop and Commercial Establishments"),
     placeholder="Select Industry Type"
@@ -101,7 +101,7 @@ option_states = st.selectbox(
 
 option_law_type = "Rules"
 
-if option_states == "Factory/Industry":
+if option_type == "Factory/Industry":
     option_codes = st.selectbox(
                 "For Code specific answer",
                 ("Introduction to Labour Codes", "The Industry Relation Codes, 2020", "The Codes on Social Security, 2020", "The Codes on Wages, 2019", "The Occupation, Safety, Health and Working Condition Code, 2020", "Employee Provident Funds Scheme, 1952", "Employee State Insurance Act, 1948", "POSH Act, 2013"),
@@ -134,6 +134,7 @@ if option_states == "Factory/Industry":
 
     elif option_codes == "POSH Act, 2013":
         option_law_type = "Codes"
+        option_states = None
 
 
     else:
