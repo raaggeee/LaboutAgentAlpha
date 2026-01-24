@@ -136,6 +136,12 @@ if option_type == "Factory/Industry":
         option_law_type = "Codes"
         option_states = "Central"
 
+    elif option_codes == "The Industry Relation Codes, 2020":
+        option_states = st.selectbox(
+            "For State specific answer",
+            ("Central", "Haryana"),
+            placeholder="Select a State..."
+        )
 
     else:
         option_states = st.selectbox(
