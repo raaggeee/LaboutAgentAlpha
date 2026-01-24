@@ -27,7 +27,7 @@ if not st.user.is_logged_in:
 def stream_generator(message):
     for word in message.split():
         yield word + " "
-        time.sleep(0.002)
+        time.sleep(0.1)
 
 if "uid" not in st.session_state:
     st.session_state.uid = str(uuid.uuid4())
