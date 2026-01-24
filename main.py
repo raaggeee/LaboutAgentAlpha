@@ -143,6 +143,13 @@ if option_type == "Factory/Industry":
             placeholder="Select a State..."
         )
 
+    elif option_codes == "The Occupation, Safety, Health and Working Condition Code, 2020":
+        option_states = st.selectbox(
+            "For State specific answer",
+            ("Central", "Haryana"),
+            placeholder="Select a State..."
+        )
+
     else:
         option_states = st.selectbox(
             "For State specific answer",
