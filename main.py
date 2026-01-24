@@ -133,12 +133,6 @@ if option_states == "Factory/Industry":
 
 
     elif option_codes == "POSH Act, 2013":
-        option_states = st.selectbox(
-            "For State specific answer",
-            ("Delhi", "Haryana"),
-            placeholder="Select a State..."
-            
-        )
         option_law_type = "Codes"
 
 
@@ -149,6 +143,7 @@ if option_states == "Factory/Industry":
             placeholder="Select a State..."
             
         )
+
         if option_states == "Central" and option_codes != "Introduction to Labour Codes":
             option_law_type = st.selectbox(
                 "Select the law type",
@@ -161,8 +156,6 @@ if option_states == "Factory/Industry":
 
         if option_codes == "Employee Provident Funds Scheme, 1952" or option_codes == "Employee State Insurance Act, 1948":
             option_law_type = "Codes"
-
-        
     
 
     option_json = {
