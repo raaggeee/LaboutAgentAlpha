@@ -250,7 +250,7 @@ if st.session_state.get("show_form"):
             st.success("Thanks for your feedback! ⭐")
             feedback_json = {
                 "state_id":state_id,
-                "rating": len(rating),
+                "rating": len(overall),
                 "relevancy": len(relevance),
                 "helfulness": len(helpfulness),
                 "feedback": feedback
