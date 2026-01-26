@@ -196,7 +196,7 @@ else:
     if option_states == "Haryana":
        option_codes = st.selectbox("For State Provisions", ("Shops and Commercial Establishments", "Labour Welfare Fund"), placeholder="Select Respective Provisions...")
 
-     option_json = {
+    option_json = {
         "state_id": state_id,
         "india_state": option_states,
         "conversation_code": option_codes,
