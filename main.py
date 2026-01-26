@@ -78,11 +78,6 @@ if st.session_state.limit != 10:
 
                 response = requests.post(f"{BASE_URL}chat?state_id", json={"state_id": state_id, "messages":messages, "question": user_query})
                 query_result = response.json().get("message", "")
-                col1, col2 = st.columns([1, 1])
-                with col1:
-                    st.button("👍 Helpful")
-                with col2:
-                    st.button("👎 Not helpful")
 
             if not query_result:
                 st.markdown(f"Oh No! Server seems down for a while!🫨")
@@ -90,6 +85,13 @@ if st.session_state.limit != 10:
             st.markdown(query_result)
         
         st.session_state.messages.append({"role":"assistant", "content":query_result})
+
+
+        col1, col2 = st.columns([1, 1])
+        with col1:
+            st.button("👍 Helpful")
+        with col2:
+            st.button("👎 Not helpful")
 
 # if st.session_state.limit == 10:
 #     feedback = {}
