@@ -118,6 +118,9 @@ if option_type == "Factory/Industry":
             
         )
 
+    elif option_codes == "Introduction to Labour Codes":
+        option_law_type = "Codes"
+
     elif option_codes == "The Codes on Wages, 2019":
         option_states = st.selectbox(
             "For State specific answer",
@@ -135,8 +138,6 @@ if option_type == "Factory/Industry":
                 placeholder="Select a Labour Law Code..."
                 
     )
-            
-
 
     elif (option_codes == "The Sexual Harassment of Women at Workplace Act, 2013" or option_codes == "The Employee Provident Funds Scheme, 1952" or option_codes == "The Employee State Insurance Act, 1948"):
         option_law_type = "Codes"
