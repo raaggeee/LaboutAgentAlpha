@@ -194,7 +194,7 @@ else:
        option_codes = st.selectbox("For Central Provisions", ("The Employee State Insurance Act, 1948", "The Employee Provident Funds Scheme, 1952"), placeholder="Select Respective Provisions...")
 
     if option_states == "Haryana":
-       option_codes = st.selectbox("For State Provisions", ("Shops and Commercial Establishments", "Labour Welfare Fund"), placeholder="Select Respective Provisions...")
+       option_codes = st.selectbox("For State Provisions", ("Shops and Commercial Establishments"), placeholder="Select Respective Provisions...")
 
     option_json = {
         "state_id": state_id,
