@@ -109,6 +109,7 @@ if option_type == "Factory/Industry":
                 
     )
 
+
     if option_codes == "Labour Welfare Rules":
         option_states = st.selectbox(
             "For State specific answer",
@@ -126,6 +127,14 @@ if option_type == "Factory/Industry":
 
         if option_states == "Central":
             option_law_type = "Codes"
+
+        else:
+            option_codes = st.selectbox(
+                "For Code specific answer",
+                ("The Industry Relation Codes, 2020", "The Codes on Social Security, 2020", "The Codes on Wages, 2019", "The Occupation, Safety, Health and Working Condition Code, 2020", "The Employee Provident Funds Scheme, 1952", "The Employee State Insurance Act, 1948", "The Sexual Harassment of Women at Workplace Act, 2013"),
+                placeholder="Select a Labour Law Code..."
+                
+    )
             
 
 
