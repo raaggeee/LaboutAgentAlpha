@@ -209,13 +209,18 @@ else:
 send_settings = requests.post(f"{BASE_URL}send_settings", json=option_json)
 #for logout
 st.button("Log out", on_click=st.logout)
-if st.button("💬 Give Feedback"):
-    st.session_state.show_feedback = True
 
-if st.session_state.get("show_feedback"):
-    feedback = st.text_area("Your feedback")
-if st.button("Submit Feedback"):
-    st.success("Thanks for your feedback! 🙏")
+with st.form("main_form"):
+    col1, col2 = st.columns([4, 1])
+
+    with col1:
+        email = st.text_input("Email")
+
+    with col2:
+        st.markdown(" ")
+        feedback = st.text_input("Feedback", label_visibility="collapsed")
+
+    submit = st.form_submit_button("Submit")
 
 post_feedback = requests.post(f"{BASE_URL}send_feedback", json=option_json)
 
