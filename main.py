@@ -189,7 +189,7 @@ else:
         placeholder="Select a State..."
     )
 
-   option_codes = ""
+   option_codes = "None"
 
    if option_states == "Central":
        option_codes = st.selectbox("For Central Provisions", ("The Employee State Insurance Act, 1948", "The Employee Provident Funds Scheme, 1952"), placeholder="Select Respective Provisions...")
