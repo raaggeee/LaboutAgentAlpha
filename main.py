@@ -125,11 +125,8 @@ if option_type == "Factory/Industry":
         )
 
         if option_states == "Central":
-            option_law_type = st.selectbox(
-                "Select the law type",
-                ("Codes", "Rules"),
-                placeholder="Select a law type..."
-            )
+            option_law_type = "Codes"
+            
 
 
     elif (option_codes == "The Sexual Harassment of Women at Workplace Act, 2013" or option_codes == "The Employee Provident Funds Scheme, 1952" or option_codes == "The Employee State Insurance Act, 1948"):
@@ -142,6 +139,8 @@ if option_type == "Factory/Industry":
             ("Central", "Haryana"),
             placeholder="Select a State..."
         )
+        if option_states == "Central":
+            option_law_type = "Codes"
 
     elif option_codes == "The Occupation, Safety, Health and Working Condition Code, 2020":
         option_states = st.selectbox(
@@ -149,6 +148,8 @@ if option_type == "Factory/Industry":
             ("Central", "Haryana"),
             placeholder="Select a State..."
         )
+        if option_states == "Central":
+            option_law_type = "Codes"
 
     else:
         option_states = st.selectbox(
@@ -157,18 +158,13 @@ if option_type == "Factory/Industry":
             placeholder="Select a State..."
             
         )
+        
 
         if option_states == "Central" and option_codes != "Introduction to Labour Codes":
-            option_law_type = st.selectbox(
-                "Select the law type",
-                ("Codes", "Rules"),
-                placeholder="Select a law type..."
-            )
-
-        if option_codes == "Introduction to Labour Codes":
             option_law_type = "Codes"
 
-        if option_codes == "Employee Provident Funds Scheme, 1952" or option_codes == "Employee State Insurance Act, 1948":
+
+        if option_codes == "Introduction to Labour Codes":
             option_law_type = "Codes"
     
 
