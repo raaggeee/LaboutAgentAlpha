@@ -169,6 +169,9 @@ if option_type == "Factory/Industry":
 
         if option_codes == "Introduction to Labour Codes":
             option_law_type = "Codes"
+
+        else:
+            option_law_type = "Rules"
     
 
     option_json = {
