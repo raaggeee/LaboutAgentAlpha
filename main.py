@@ -125,20 +125,12 @@ if option_type == "Factory/Industry":
     elif option_codes == "The Codes on Wages, 2019":
         option_states = st.selectbox(
             "For State specific answer",
-            ("Central", "Delhi", "Haryana"),
+            ("Central", "Delhi", "Haryana", "Uttar Pradesh"),
             placeholder="Select a State..."
         )
 
         if option_states == "Central":
             option_law_type = "Codes"
-
-        else:
-            option_codes = st.selectbox(
-                "For Code specific answer",
-                ("The Industry Relation Codes, 2020", "The Codes on Social Security, 2020", "The Codes on Wages, 2019", "The Occupation, Safety, Health and Working Condition Code, 2020", "The Employee Provident Funds Scheme, 1952", "The Employee State Insurance Act, 1948", "The Sexual Harassment of Women at Workplace Act, 2013"),
-                placeholder="Select a Labour Law Code..."
-                
-    )
 
     elif (option_codes == "The Sexual Harassment of Women at Workplace Act, 2013" or option_codes == "The Employee Provident Funds Scheme, 1952" or option_codes == "The Employee State Insurance Act, 1948"):
         option_law_type = "Codes"
@@ -156,7 +148,7 @@ if option_type == "Factory/Industry":
     elif option_codes == "The Occupation, Safety, Health and Working Condition Code, 2020":
         option_states = st.selectbox(
             "For State specific answer",
-            ("Central", "Haryana"),
+            ("Central", "Haryana", "Uttar Pradesh"),
             placeholder="Select a State..."
         )
         if option_states == "Central":
@@ -165,7 +157,7 @@ if option_type == "Factory/Industry":
     else:
         option_states = st.selectbox(
             "For State specific answer",
-            ("Central", "Delhi", "Haryana"),
+            ("Central", "Delhi", "Haryana", "Uttar Pradesh"),
             placeholder="Select a State..."
             
         )
