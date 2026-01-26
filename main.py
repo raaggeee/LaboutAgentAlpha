@@ -212,6 +212,7 @@ if st.button("💬 Give feedback"):
 
 
 if st.session_state.get("show_form"):
+    state_id = st.user.email
     with st.form("feedback_form"):
 
         # Q1: Overall rating
