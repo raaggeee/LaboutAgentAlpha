@@ -120,6 +120,7 @@ if option_type == "Factory/Industry":
 
     elif option_codes == "Introduction to Labour Codes":
         option_law_type = "Codes"
+        option_states = "Central"
 
     elif option_codes == "The Codes on Wages, 2019":
         option_states = st.selectbox(
