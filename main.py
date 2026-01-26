@@ -210,9 +210,6 @@ st.button("Log out", on_click=st.logout)
 if st.button("💬 Give feedback"):
     st.session_state.show_form = True
 
-# Feedback form (conditionally rendered)
-if st.button("💬 Give feedback"):
-    st.session_state.show_form = True
 
 if st.session_state.get("show_form"):
     with st.form("feedback_form"):
