@@ -104,7 +104,7 @@ option_law_type = "Rules"
 if option_type == "Factory/Industry":
     option_codes = st.selectbox(
                 "For Code specific answer",
-                ("Introduction to Labour Codes", "The Industry Relation Codes, 2020", "The Codes on Social Security, 2020", "The Codes on Wages, 2019", "The Occupation, Safety, Health and Working Condition Code, 2020", "The Employee Provident Funds Scheme, 1952", "The Employee State Insurance Act, 1948", "The The Sexual Harassment of Women at Workplace Act, 2013"),
+                ("Introduction to Labour Codes", "The Industry Relation Codes, 2020", "The Codes on Social Security, 2020", "The Codes on Wages, 2019", "The Occupation, Safety, Health and Working Condition Code, 2020", "The Employee Provident Funds Scheme, 1952", "The Employee State Insurance Act, 1948", "The Sexual Harassment of Women at Workplace Act, 2013"),
                 placeholder="Select a Labour Law Code..."
                 
     )
@@ -132,7 +132,7 @@ if option_type == "Factory/Industry":
             )
 
 
-    elif (option_codes == "POSH Act, 2013" or option_codes == "Employee Provident Funds Scheme, 1952" or option_codes == "Employee State Insurance Act, 1948"):
+    elif (option_codes == "The Sexual Harassment of Women at Workplace Act, 2013" or option_codes == "The Employee Provident Funds Scheme, 1952" or option_codes == "The Employee State Insurance Act, 1948"):
         option_law_type = "Codes"
         option_states = "Central"
 
