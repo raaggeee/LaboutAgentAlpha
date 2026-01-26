@@ -211,18 +211,61 @@ if st.button("💬 Give feedback"):
     st.session_state.show_form = True
 
 # Feedback form (conditionally rendered)
+if st.button("💬 Give feedback"):
+    st.session_state.show_form = True
+
 if st.session_state.get("show_form"):
     with st.form("feedback_form"):
-        feedback = st.text_area("Your feedback")
-        submitted = st.form_submit_button("Submit")
 
-        if submitted:
-            st.success("Thanks for your feedback! 🙏")
+        # Q1: Overall rating
+        overall = st.radio(
+            "⭐ Overall experience",
+            ["⭐", "⭐⭐", "⭐⭐⭐", "⭐⭐⭐⭐", "⭐⭐⭐⭐⭐"],
+            horizontal=True
+        )
+
+        # Q2: Relevance
+        relevance = st.radio(
+            "⭐ Were the answers relevant?",
+            ["⭐", "⭐⭐", "⭐⭐⭐", "⭐⭐⭐⭐", "⭐⭐⭐⭐⭐"],
+            horizontal=True
+        )
+
+        # Q3: Helpfulness
+        helpfulness = st.radio(
+            "⭐ Was it helpful?",
+            ["⭐", "⭐⭐", "⭐⭐⭐", "⭐⭐⭐⭐", "⭐⭐⭐⭐⭐"],
+            horizontal=True
+        )
+
+        feedback = st.text_area(
+            "Additional comments (optional)",
+            placeholder="Tell us what could be better…"
+        )
+
+        col1, col2 = st.columns(2)
+        with col1:
+            submit = st.form_submit_button("Submit")
+        with col2:
+            cancel = st.form_submit_button("Cancel")
+
+        if submit:
+            st.success("Thanks for your feedback! ⭐")
+            feedback_json = {
+                "state_id":state_id,
+                "rating": len(rating),
+                "relevancy": len(relevance),
+                "helfulness": len(helpfulness),
+                "feedback": feedback
+            }
+            post_feedback = requests.post(f"{BASE_URL}send_feedback", json=feedback_json)
+            st.session_state.show_form = False
+
+        if cancel:
             st.session_state.show_form = False
 
 send_settings = requests.post(f"{BASE_URL}send_settings", json=option_json)
 
-post_feedback = requests.post(f"{BASE_URL}send_feedback", json=option_json)
 
 # if user_query:
 #     with st.spinner("Getting your query sorted..."):
