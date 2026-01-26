@@ -209,6 +209,15 @@ else:
 send_settings = requests.post(f"{BASE_URL}send_settings", json=option_json)
 #for logout
 st.button("Log out", on_click=st.logout)
+if st.button("💬 Give Feedback"):
+    st.session_state.show_feedback = True
+
+if st.session_state.get("show_feedback"):
+    feedback = st.text_area("Your feedback")
+if st.button("Submit Feedback"):
+    st.success("Thanks for your feedback! 🙏")
+
+post_feedback = requests.post(f"{BASE_URL}send_feedback", json=option_json)
 
 # if user_query:
 #     with st.spinner("Getting your query sorted..."):
