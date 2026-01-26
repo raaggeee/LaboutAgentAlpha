@@ -173,8 +173,7 @@ if option_type == "Factory/Industry":
         else:
             option_law_type = "Rules"
     
-
-    option_json = {
+     option_json = {
         "state_id": state_id,
         "conversation_code": option_codes,
         "india_state": option_states,
@@ -183,21 +182,21 @@ if option_type == "Factory/Industry":
     }
 
 else:
-    option_states = st.selectbox(
+     option_states = st.selectbox(
         "For State specific answer",
         ("Central", "Haryana"),
         placeholder="Select a State..."
     )
 
-   option_codes = "None"
+    option_codes = "None"
 
-   if option_states == "Central":
+    if option_states == "Central":
        option_codes = st.selectbox("For Central Provisions", ("The Employee State Insurance Act, 1948", "The Employee Provident Funds Scheme, 1952"), placeholder="Select Respective Provisions...")
 
-   if option_states == "Haryana":
+    if option_states == "Haryana":
        option_codes = st.selectbox("For State Provisions", ("Shops and Commercial Establishments", "Labour Welfare Fund"), placeholder="Select Respective Provisions...")
 
-    option_json = {
+     option_json = {
         "state_id": state_id,
         "india_state": option_states,
         "conversation_code": option_codes,
