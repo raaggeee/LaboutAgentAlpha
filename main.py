@@ -78,6 +78,11 @@ if st.session_state.limit != 10:
 
                 response = requests.post(f"{BASE_URL}chat?state_id", json={"state_id": state_id, "messages":messages, "question": user_query})
                 query_result = response.json().get("message", "")
+                col1, col2 = st.columns([1, 1])
+                with col1:
+                    st.button("👍 Helpful")
+                with col2:
+                    st.button("👎 Not helpful")
 
             if not query_result:
                 st.markdown(f"Oh No! Server seems down for a while!🫨")
@@ -86,12 +91,12 @@ if st.session_state.limit != 10:
         
         st.session_state.messages.append({"role":"assistant", "content":query_result})
 
-if st.session_state.limit == 10:
-    feedback = {}
-    with st.form("Feedback_Form"):
-        st.write("Thanks for the conversation.")
-        name = st.text_input("First Name")
-        phone_no = st.text_input
+# if st.session_state.limit == 10:
+#     feedback = {}
+#     with st.form("Feedback_Form"):
+#         st.write("Thanks for the conversation.")
+#         name = st.text_input("First Name")
+#         phone_no = st.text_input
 
 option_type = st.selectbox(
     "Select Establishment type",
@@ -207,8 +212,6 @@ else:
     }
 
 send_settings = requests.post(f"{BASE_URL}send_settings", json=option_json)
-#for logout
-st.button("Log out", on_click=st.logout)
 
 post_feedback = requests.post(f"{BASE_URL}send_feedback", json=option_json)
 
