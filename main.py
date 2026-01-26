@@ -86,13 +86,6 @@ if st.session_state.limit != 10:
         
         st.session_state.messages.append({"role":"assistant", "content":query_result})
 
-
-        col1, col2 = st.columns([1, 1])
-        with col1:
-            st.button("👍 Helpful")
-        with col2:
-            st.button("👎 Not helpful")
-
 # if st.session_state.limit == 10:
 #     feedback = {}
 #     with st.form("Feedback_Form"):
@@ -212,6 +205,8 @@ else:
         "estb_type":"shop_and_comm_estd",
         "law_type":""
     }
+
+st.button("Log out", on_click=st.logout)
 
 send_settings = requests.post(f"{BASE_URL}send_settings", json=option_json)
 
