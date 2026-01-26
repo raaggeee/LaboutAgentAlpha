@@ -250,11 +250,11 @@ if st.session_state.get("show_form"):
         if submit:
             st.success("Thanks for your feedback! ⭐")
             feedback_json = {
-                "state_id":state_id,
+                "state_id":str(state_id),
                 "rating": len(overall),
                 "relevancy": len(relevance),
-                "helfulness": len(helpfulness),
-                "feedback": feedback
+                "helpfulness": len(helpfulness),
+                "feedback": str(feedback)
             }
             post_feedback = requests.post(f"{BASE_URL}send_feedback", json=feedback_json)
             st.session_state.show_form = False
