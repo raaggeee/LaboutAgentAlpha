@@ -173,7 +173,7 @@ if option_type == "Factory/Industry":
         else:
             option_law_type = "Rules"
     
-     option_json = {
+    option_json = {
         "state_id": state_id,
         "conversation_code": option_codes,
         "india_state": option_states,
@@ -182,7 +182,7 @@ if option_type == "Factory/Industry":
     }
 
 else:
-     option_states = st.selectbox(
+    option_states = st.selectbox(
         "For State specific answer",
         ("Central", "Haryana"),
         placeholder="Select a State..."
