@@ -192,7 +192,7 @@ else:
 
     if option_states == "Central":
         option_codes = "The Employee State Insurance Act, 1948"
-        option_codes = st.selectbox("For Central Provisions", ("The Employee State Insurance Act, 1948", "The Employee Provident Funds Scheme, 1952"), placeholder="Select Respective Provisions...")
+        option_codes = st.selectbox("For Central Provisions", ("The Employee State Insurance Act, 1948", "The Employee Provident Funds Scheme, 1952"), placeholder="Select Respective Provisions...", disabled=True)
 
     if option_states == "Haryana":
         option_codes = "Shops and Commercial Establishments"
