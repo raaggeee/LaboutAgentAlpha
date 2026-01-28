@@ -184,7 +184,7 @@ if option_type == "Factory/Industry":
 else:
     option_states = st.selectbox(
         "For State specific answer",
-        ("Haryana"),
+        ("Central", "Haryana"),
         placeholder="Select a State..."
     )
 
@@ -192,7 +192,7 @@ else:
 
     if option_states == "Central":
         option_codes = "The Employee State Insurance Act, 1948"
-        option_codes = st.selectbox("For Central Provisions", ("The Employee State Insurance Act, 1948", "The Employee Provident Funds Scheme, 1952"), placeholder="Select Respective Provisions...", disabled=True)
+        option_codes = st.selectbox("For Central Provisions", ("The Employee State Insurance Act, 1948", "The Employee Provident Funds Scheme, 1952"), placeholder="Select Respective Provisions...")
 
     if option_states == "Haryana":
         option_codes = "Shops and Commercial Establishments"
