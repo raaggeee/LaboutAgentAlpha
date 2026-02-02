@@ -95,9 +95,12 @@ if st.session_state.limit != 10:
 
 option_type = st.selectbox(
     "Select Establishment type",
-    ("Factory/Industry", "Shop and Commercial Establishments"),
+    # ("Factory/Industry", "Shop and Commercial Establishments"),
+    ("Factory/Industry"),
+
     placeholder="Select Industry Type"
 )
+st.markdown(":green[:small[Shops and Commercial Establishments is getting updated...]]")
 
 option_law_type = "Rules"
 
@@ -185,8 +188,7 @@ else:
     option_states = st.selectbox(
         "For State specific answer",
         ("Central", "Haryana"),
-        placeholder="Select a State...",
-        disabled=True
+        placeholder="Select a State..."
     )
 
     option_codes = "None"
