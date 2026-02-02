@@ -185,7 +185,8 @@ else:
     option_states = st.selectbox(
         "For State specific answer",
         ("Central", "Haryana"),
-        placeholder="Select a State..."
+        placeholder="Select a State...",
+        disabled=True
     )
 
     option_codes = "None"
