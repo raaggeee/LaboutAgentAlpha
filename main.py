@@ -23,7 +23,6 @@ if not st.user.is_logged_in:
 
     st.stop()
 
-
 def stream_generator(message):
     for word in message.split():
         yield word + " "
@@ -165,7 +164,6 @@ if option_type == "Factory/Industry":
         if option_states == "Central" and option_codes != "Introduction to Labour Codes":
             option_law_type = "Codes"
 
-
         if option_codes == "Introduction to Labour Codes":
             option_law_type = "Codes"
 
@@ -181,6 +179,7 @@ if option_type == "Factory/Industry":
     }
 
 else:
+    option_states = "Central"
     option_states = st.selectbox(
         "For State specific answer",
         ("Central", "Haryana"),
