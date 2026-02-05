@@ -95,8 +95,8 @@ if st.session_state.limit != 10:
 
 option_type = st.selectbox(
     "Select Establishment type",
-    # ("Factory/Industry", "Shop and Commercial Establishments"),
-    ("Factory/Industry"),
+    ("Factory/Industry", "Shop and Commercial Establishments"),
+    # ("Factory/Industry"),
 
     placeholder="Select Industry Type"
 )
@@ -162,10 +162,8 @@ if option_type == "Factory/Industry":
             "For State specific answer",
             ("Central", "Delhi", "Haryana", "Uttar Pradesh"),
             placeholder="Select a State..."
-            
         )
         
-
         if option_states == "Central" and option_codes != "Introduction to Labour Codes":
             option_law_type = "Codes"
 
