@@ -109,9 +109,7 @@ if option_type == "Factory/Industry":
                 "For Code specific answer",
                 ("Introduction to Labour Codes", "The Industry Relation Codes, 2020", "The Codes on Social Security, 2020", "The Codes on Wages, 2019", "The Occupation, Safety, Health and Working Condition Code, 2020", "The Employee Provident Funds Scheme, 1952", "The Employee State Insurance Act, 1948", "The Sexual Harassment of Women at Workplace Act, 2013"),
                 placeholder="Select a Labour Law Code..."
-                
     )
-
 
     if option_codes == "Labour Welfare Rules":
         option_states = st.selectbox(
@@ -223,20 +221,6 @@ if st.session_state.get("show_form"):
             horizontal=True
         )
 
-        # Q2: Relevance
-        relevance = st.radio(
-            "⭐ Were the answers relevant?",
-            ["⭐", "⭐⭐", "⭐⭐⭐", "⭐⭐⭐⭐", "⭐⭐⭐⭐⭐"],
-            horizontal=True
-        )
-
-        # Q3: Helpfulness
-        helpfulness = st.radio(
-            "⭐ Was it helpful?",
-            ["⭐", "⭐⭐", "⭐⭐⭐", "⭐⭐⭐⭐", "⭐⭐⭐⭐⭐"],
-            horizontal=True
-        )
-
         feedback = st.text_area(
             "Additional comments (optional)",
             placeholder="Tell us what could be better…"
@@ -253,8 +237,8 @@ if st.session_state.get("show_form"):
             feedback_json = {
                 "state_id":str(state_id),
                 "rating": len(overall),
-                "relevancy": len(relevance),
-                "helpfulness": len(helpfulness),
+                "relevancy": 0,
+                "helpfulness": 0,
                 "feedback": str(feedback)
             }
             post_feedback = requests.post(f"{BASE_URL}send_feedback", json=feedback_json)
