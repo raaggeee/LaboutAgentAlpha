@@ -5,6 +5,12 @@ import requests
 import time
 import authlib
 
+hide_github_icon = """
+#GithubIcon {
+  visibility: hidden;
+}
+"""
+
 BASE_URL = st.secrets["BASE_URL"]
 
 if not st.user.is_logged_in:
