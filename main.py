@@ -189,7 +189,7 @@ else:
     option_states = "Central"
     option_states = st.selectbox(
         "For State specific answer",
-        ("Central", "Haryana"),
+        ("Central", "Haryana", "Delhi"),
         placeholder="Select a State..."
     )
 
@@ -201,14 +201,14 @@ else:
 
     if option_states == "Haryana":
         option_codes = "Shops and Commercial Establishments"
-        option_codes = st.selectbox("For State Provisions", ("Shops and Commercial Establishments"), placeholder="Select Respective Provisions...")
+        option_codes = st.selectbox("For Other Provisions", ("Shops and Commercial Establishments"), placeholder="Select Respective Provisions...")
 
     option_json = {
         "state_id": state_id,
         "india_state": option_states,
         "conversation_code": option_codes,
         "estb_type":"shop_and_comm_estd",
-        "law_type":""
+        "law_type": option_law_type
     }
 
 st.button("Log out", on_click=st.logout)
