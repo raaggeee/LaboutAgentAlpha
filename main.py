@@ -136,7 +136,7 @@ option_type = st.selectbox(
 
     placeholder="Select Industry Type"
 )
-st.markdown(":green[:small[Shops and Commercial Establishments is getting updated...]]")
+# st.markdown(":green[:small[Shops and Commercial Establishments is getting updated...]]")
 
 option_law_type = "Rules"
 
