@@ -35,7 +35,7 @@ if not st.user.is_logged_in:
     submit = st.button("Send")
     
 
-    if st.session_state.limit_trial != 5:
+    if limit != 5:
         if submit:
             try:
                 response = requests.post(f"{BASE_URL}trial", json={"question": user_query})
