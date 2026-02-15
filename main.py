@@ -36,9 +36,9 @@ if not st.user.is_logged_in:
     messages_trial = st.session_state.messages_trial
     limit = st.session_state.limit_trial
 
-    for message in messages_trial:
-        with st.chat_message(message["role"]):
-            st.markdown(message["content"])
+    # for message in messages_trial:
+    #     with st.chat_message(message["role"]):
+    #         st.markdown(message["content"])
     
     st.subheader("Try it here!")
     user_query = st.text_input(random.choice(questions_placeholder))
@@ -63,7 +63,6 @@ if not st.user.is_logged_in:
 
                     except:
                         st.markdown(f"Oh No! Server seems down for a while!🫨")
-
             
             st.session_state.messages_trial.append({"role":"assistant", "content":query_result})
 
