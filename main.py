@@ -102,7 +102,7 @@ for message in messages:
         st.markdown(message["content"])
 
 if st.session_state.limit != 10:
-    if user_query := st.chat_input(random.choice(questions_placeholder)):
+    if user_query := st.chat_input("Ask your query here..."):
         
         st.session_state.messages.append({"role":"user", "content":user_query})
 
