@@ -218,7 +218,11 @@ if option_type == "Factory/Industry":
 
 else:
     # option_states = "Central"
-    # 
+    option_states = st.selectbox(
+        "For State specific answer",
+        ("Haryana", "Delhi"),
+        placeholder="Select a State..."
+    )
 
     provisions = "Central"
     
