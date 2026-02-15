@@ -27,8 +27,48 @@ if not st.user.is_logged_in:
     st.markdown("- All Acts, Laws, Notifications and Rule related to Central and State Labour Laws.")
     st.markdown("- Interactive way to understand and apply Labour Laws in Corporate.")
 
+    if "limit" not in st.session_state:
+        st.session_state.limit_trial = 0
+
+    if "messages_trial" not in st.session_state:
+        st.session_state.messages_trial = []
+
+    messages_trial = st.session_state.messages_trial
+    limit = st.session_state.limit_trial
+
+    for message in messages_trial:
+        with st.chat_message(message["role"]):
+            st.markdown(message["content"])
+    
+    st.subheader("Try it here!")
+    user_query = st.text_input(random.choice(questions_placeholder))
     if st.button("Login with Google"):
         st.login("google")
+
+    if st.session_state.limit_trial != 5:
+        if user_query:
+            
+            st.session_state.messages_trial.append({"role":"user", "content":user_query})
+
+            with st.chat_message("user"):
+                st.markdown(f"{user_query}")    
+
+            with st.chat_message("assistant"):
+                with st.spinner("Thinking..."):
+                    try:
+                        response = requests.post(f"{BASE_URL}trial?state_id", json={"messages":messages_trial, "question": user_query})
+                        query_result = response.json().get("message", "")
+                        st.session_state.limit_trial += 1
+                        st.markdown(query_result)
+
+                    except:
+                        st.markdown(f"Oh No! Server seems down for a while!🫨")
+
+            
+            st.session_state.messages_trial.append({"role":"assistant", "content":query_result})
+
+    else:
+        st.markdown(f"Please login to get the best experience...")
 
 
     st.stop()
