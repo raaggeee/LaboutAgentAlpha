@@ -17,7 +17,7 @@ questions_placeholder = ["Ask about any labour law here...", "Why don't you ask 
 BASE_URL = st.secrets["BASE_URL"]
 
 if not st.user.is_logged_in:
-    st.header("_Labour_:blue[Agent]")
+    st.header("_Labour_:blue[Agent]🐝")
     st.write("Still juggling between multiple Labour Law Websites and Documents?🫨")
     st.write("Try LabourAgent. Your one stop Labour Law guide.")
     st.subheader("What is LabourAgent?")
@@ -33,9 +33,32 @@ if not st.user.is_logged_in:
     if "messages_trial" not in st.session_state:
         st.session_state.messages_trial = []
 
+    messages_trial = st.session_state.messages_trial
+    limit = st.session_state.limit_trial
+    
+    st.subheader("Try it here!")
+    user_query = st.text_input(random.choice(questions_placeholder))
+    
+
+    if st.session_state.limit_trial != 5:
+        if user_query:
+            try:
+                response = requests.post(f"{BASE_URL}trial?state_id", json={"messages":messages_trial, "question": user_query})
+                query_result = response.json().get("message", "")
+
+                if len(query_result) == 0:
+                    query_result = f"Oh No! Our server is facing some error! Please login to know about every provision in detail!🐝"
+
+
+            except:
+                query_result = "Oh No! Our server is facing some error! Please login to know about every provision in detail!🐝"
+    else:
+        query_result = f"To know more, please Login...😅🐝"
+        
+    st.write(query_result)
+
     if st.button("Login with Google"):
         st.login("google")
-
     st.stop()
 
 def stream_generator(message):
