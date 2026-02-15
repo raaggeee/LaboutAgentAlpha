@@ -41,9 +41,10 @@ if not st.user.is_logged_in:
             st.markdown(message["content"])
     
     st.subheader("Try it here!")
+    user_query = st.chat_input(random.choice(questions_placeholder))
 
     if st.session_state.limit_trial != 5:
-        if user_query := st.chat_input(random.choice(questions_placeholder)):
+        if user_query:
             
             st.session_state.messages_trial.append({"role":"user", "content":user_query})
 
