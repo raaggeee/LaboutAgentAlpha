@@ -199,7 +199,7 @@ else:
         option_codes = "The Employee State Insurance Act, 1948"
         option_codes = st.selectbox("For Central Provisions", ("The Employee State Insurance Act, 1948", "The Employee Provident Funds Scheme, 1952"), placeholder="Select Respective Provisions...")
 
-    if option_states == "Haryana":
+    if option_states in ["Haryana", "Delhi"]:
         option_codes = "The Shops and Commercial Establishments Act and Rules"
         option_codes = st.selectbox("For Other Provisions", ("The Shops and Commercial Establishments Act and Rules", "The Labour Welfare Fund Acts and Rules"), placeholder="Select Respective Provisions...")
 
