@@ -231,7 +231,7 @@ else:
     if provisions == "Central":
         option_states = "Central"
         option_codes = "The Employee State Insurance Act, 1948"
-        option_codes = st.selectbox("For Central Provisions", ("The Employee State Insurance Act, 1948", "The Employee Provident Funds Scheme, 1952"), placeholder="Select Respective Provisions...")
+        option_codes = st.selectbox("For Central Provisions", ("The Employee State Insurance Act, 1948", "The Employee Provident Funds Scheme, 1952", "The Sexual Harassment of Women at Workplace Act, 2013"), placeholder="Select Respective Provisions...")
 
     if provisions == "State":
         option_states = st.selectbox(
