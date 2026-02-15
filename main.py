@@ -52,10 +52,13 @@ if not st.user.is_logged_in:
 
             except:
                 query_result = "Oh No! Our server is facing some error! Please login to know about every provision in detail!🐝"
+
+            st.write(query_result)
+            
     else:
         query_result = f"To know more, please Login...😅🐝"
         
-    st.write(query_result)
+        st.write(query_result)
 
     if st.button("Login with Google"):
         st.login("google")
