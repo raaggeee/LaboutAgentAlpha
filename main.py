@@ -27,8 +27,6 @@ if not st.user.is_logged_in:
     st.markdown("- All Acts, Laws, Notifications and Rule related to Central and State Labour Laws.")
     st.markdown("- Interactive way to understand and apply Labour Laws in Corporate.")
 
-    
-
     if "limit" not in st.session_state:
         st.session_state.limit_trial = 0
 
@@ -44,7 +42,7 @@ if not st.user.is_logged_in:
     
     st.subheader("Try it here!")
 
-    if limit != 5:
+    if st.session_state.limit_trial != 5:
         if user_query := st.chat_input(random.choice(questions_placeholder)):
             
             st.session_state.messages_trial.append({"role":"user", "content":user_query})
@@ -57,7 +55,7 @@ if not st.user.is_logged_in:
 
                     response = requests.post(f"{BASE_URL}trial?state_id", json={"messages":messages_trial, "question": user_query})
                     query_result = response.json().get("message", "")
-                    limit += 1
+                    st.session_state.limit_trial += 1
 
 
                 if not query_result:
