@@ -38,7 +38,7 @@ if not st.user.is_logged_in:
     limit = st.session_state.limit_trial
     
     st.subheader("Try interacting with our Swarm")
-    user_query = st.text_input()
+    user_query = st.text_input("Enter your query here!")
     submit = st.button("Send")
     
 
