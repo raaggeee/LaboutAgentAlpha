@@ -4,12 +4,15 @@ import uuid
 import requests
 import time
 import authlib
-
+import random
 hide_github_icon = """
 #GithubIcon {
   visibility: hidden;
 }
 """
+
+questions_placeholder = ["Ask about any labour law here...", "Why don't you ask something about labour codes?", "Know about Latest Draft Labour Codes..", 
+                         "I doubt you have all the info. Ask here..."]
 
 BASE_URL = st.secrets["BASE_URL"]
 
@@ -23,6 +26,50 @@ if not st.user.is_logged_in:
     st.markdown("- New and Updated Labour Law knowledge base.")
     st.markdown("- All Acts, Laws, Notifications and Rule related to Central and State Labour Laws.")
     st.markdown("- Interactive way to understand and apply Labour Laws in Corporate.")
+
+    
+
+    if "limit" not in st.session_state:
+        st.session_state.limit_trial = 0
+
+    if "messages_trial" not in st.session_state:
+        st.session_state.messages_trial = []
+
+    messages_trial = st.session_state.messages_trial
+    limit = st.session_state.limit_trial
+
+    for message in messages_trial:
+        with st.chat_message(message["role"]):
+            st.markdown(message["content"])
+    
+    st.subheader("Try it here!")
+
+    if limit != 5:
+        if user_query := st.chat_input(random.choice(questions_placeholder)):
+            
+            st.session_state.messages_trial.append({"role":"user", "content":user_query})
+
+            with st.chat_message("user"):
+                st.markdown(f"{user_query}")    
+
+            with st.chat_message("assistant"):
+                with st.spinner("Thinking..."):
+
+                    response = requests.post(f"{BASE_URL}trial?state_id", json={"messages":messages_trial, "question": user_query})
+                    query_result = response.json().get("message", "")
+                    limit += 1
+
+
+                if not query_result:
+                    st.markdown(f"Oh No! Server seems down for a while!🫨")
+
+                st.markdown(query_result)
+            
+            st.session_state.messages_trial.append({"role":"assistant", "content":query_result})
+
+    else:
+        st.markdown(f"Please login to get the best experience...")
+
 
     if st.button("Login with Google"):
         st.login("google")
@@ -71,7 +118,7 @@ for message in messages:
         st.markdown(message["content"])
 
 if st.session_state.limit != 10:
-    if user_query := st.chat_input(f"Write you queries Labour Laws..."):
+    if user_query := st.chat_input(random.choice(questions_placeholder)):
         
         st.session_state.messages.append({"role":"user", "content":user_query})
 
@@ -112,7 +159,7 @@ option_law_type = "Rules"
 if option_type == "Factory/Industry":
     option_codes = st.selectbox(
                 "For Code specific answer",
-                ("Introduction to Labour Codes", "The Industry Relation Codes, 2020", "The Codes on Social Security, 2020", "The Codes on Wages, 2019", "The Occupation, Safety, Health and Working Condition Code, 2020", "The Employee Provident Funds Scheme, 1952", "The Employee State Insurance Act, 1948", "The Sexual Harassment of Women at Workplace Act, 2013", "The Labour Welfare Fund Acts and Rules"),
+                ("The Industry Relation Codes, 2020", "The Codes on Social Security, 2020", "The Codes on Wages, 2019", "The Occupation, Safety, Health and Working Condition Code, 2020", "The Employee Provident Funds Scheme, 1952", "The Employee State Insurance Act, 1948", "The Sexual Harassment of Women at Workplace Act, 2013", "The Labour Welfare Fund Acts and Rules"),
                 placeholder="Select a Labour Law Code..."
     )
 
