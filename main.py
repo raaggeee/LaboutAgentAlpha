@@ -39,10 +39,11 @@ if not st.user.is_logged_in:
     
     st.subheader("Try interacting with our Swarm")
     user_query = st.text_input(random.choice(questions_placeholder))
+    submit = st.button("Send")
     
 
     if st.session_state.limit_trial != 5:
-        if user_query:
+        if submit:
             try:
                 response = requests.post(f"{BASE_URL}trial", json={"question": user_query})
                 query_result = response.json().get("message", "")
