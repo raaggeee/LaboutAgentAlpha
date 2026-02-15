@@ -238,11 +238,6 @@ else:
         option_codes = st.selectbox("For Central Provisions", ("The Employee State Insurance Act, 1948", "The Employee Provident Funds Scheme, 1952", "The Sexual Harassment of Women at Workplace Act, 2013"), placeholder="Select Respective Provisions...")
 
     if provisions == "State":
-        option_states = st.selectbox(
-        "For State specific answer",
-        ("Haryana", "Delhi"),
-        placeholder="Select a State..."
-    )
         option_codes = "The Shops and Commercial Establishments Act and Rules"
         option_codes = st.selectbox("For Other Provisions", ("The Shops and Commercial Establishments Act and Rules", "The Labour Welfare Fund Acts and Rules"), placeholder="Select Respective Provisions...")
 
