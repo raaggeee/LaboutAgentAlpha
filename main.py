@@ -42,6 +42,8 @@ if not st.user.is_logged_in:
     
     st.subheader("Try it here!")
     user_query = st.chat_input(random.choice(questions_placeholder))
+    if st.button("Login with Google"):
+        st.login("google")
 
     if st.session_state.limit_trial != 5:
         if user_query:
@@ -70,8 +72,7 @@ if not st.user.is_logged_in:
         st.markdown(f"Please login to get the best experience...")
 
 
-    if st.button("Login with Google"):
-        st.login("google")
+    
 
     st.stop()
 
