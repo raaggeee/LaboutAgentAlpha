@@ -225,11 +225,7 @@ if option_type == "Factory/Industry":
 
 else:
     # option_states = "Central"
-    # option_states = st.selectbox(
-    #     "For State specific answer",
-    #     ("Central", "Haryana", "Delhi"),
-    #     placeholder="Select a State..."
-    # )
+    # 
 
     provisions = "Central"
     
@@ -240,16 +236,22 @@ else:
     option_codes = "None"
 
     if provisions == "Central":
+        option_states = "Central"
         option_codes = "The Employee State Insurance Act, 1948"
         option_codes = st.selectbox("For Central Provisions", ("The Employee State Insurance Act, 1948", "The Employee Provident Funds Scheme, 1952"), placeholder="Select Respective Provisions...")
 
-    if provisions in ["Haryana", "Delhi"]:
+    if provisions == "State":
+        option_states = st.selectbox(
+        "For State specific answer",
+        ("Haryana", "Delhi"),
+        placeholder="Select a State..."
+    )
         option_codes = "The Shops and Commercial Establishments Act and Rules"
         option_codes = st.selectbox("For Other Provisions", ("The Shops and Commercial Establishments Act and Rules", "The Labour Welfare Fund Acts and Rules"), placeholder="Select Respective Provisions...")
 
     option_json = {
         "state_id": state_id,
-        "india_state": provisions,
+        "india_state": option_states,
         "conversation_code": option_codes,
         "estb_type":"shop_and_comm_estd",
         "law_type": option_law_type
