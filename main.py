@@ -249,7 +249,7 @@ else:
 
     option_json = {
         "state_id": state_id,
-        "india_state": option_states,
+        "india_state": provisions,
         "conversation_code": option_codes,
         "estb_type":"shop_and_comm_estd",
         "law_type": option_law_type
